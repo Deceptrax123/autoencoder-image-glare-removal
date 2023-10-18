@@ -1,6 +1,7 @@
 import torch 
 from torch.nn import Module,Conv2d,Softmax2d,ReLU,MaxPool2d,Dropout2d,Upsample,AdaptiveAvgPool2d,ConvTranspose2d,BatchNorm2d
 from torchsummary import summary
+from torch import nn
 
 
 class Auto(Module):
@@ -75,6 +76,13 @@ class Auto(Module):
         self.dp11=Dropout2d()
         self.dp12=Dropout2d()
         self.dp13=Dropout2d()
+
+    def _init_weights(self,module):
+        if isinstance(module,(nn.Conv2d,nn.BatchNorm2d)):
+            if module.bias.data is not None:
+                module.bias.data.zero_()
+            else:
+                nn.init.kaiming_normal_(module.weight.data,mode='fan_in',nonlinearity='relu')
     
     def forward(self,x):
 
