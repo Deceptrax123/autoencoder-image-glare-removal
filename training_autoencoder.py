@@ -1,7 +1,7 @@
 import torch 
 import torchvision.transforms as T 
 from torch.utils.data import DataLoader
-from enhancement_dataset import EnhancementDataset
+from enhancement_dataset import EnhancementDataset,GlareDataset
 from models.autoencoder.auto import Auto
 from time import time 
 from torch import nn
@@ -59,7 +59,7 @@ def training_loop():
 
             #Checkpoints
             if((epoch+1)%10==0):
-                path="./weights/autoencoder/run_1/model{epoch}.pth".format(epoch=epoch+1)
+                path="./weights/autoencoder/run_2/model{epoch}.pth".format(epoch=epoch+1)
                 torch.save(model.state_dict(),path)
                 
 
@@ -75,7 +75,7 @@ if __name__=='__main__':
     }
 
     #dataset
-    dataset=EnhancementDataset(labels=labels)
+    dataset=GlareDataset(labels=labels)
 
     #logging
     wandb.init(
@@ -97,7 +97,7 @@ if __name__=='__main__':
 
     #Hyperparameters
     LR=0.001
-    NUM_EPOCHS=1500
+    NUM_EPOCHS=7500
     BETAS=(0.9,0.999)
     DECAY=0.001
 
