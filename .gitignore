@@ -12,10 +12,14 @@ Icon
 
 #Data folders
 enhanced_errors/
-errors
+errors/
+glare_removed/
 
 #logging
 wandb/
+
+#weights
+weights/
 
 # Thumbnails
 ._*

@@ -98,13 +98,15 @@ if __name__=='__main__':
     #Hyperparameters
     LR=0.001
     NUM_EPOCHS=1500
+    BETAS=(0.9,0.999)
+    DECAY=0.001
 
     #Objective Function
     objective=nn.SmoothL1Loss()
 
     #Models
     model=Auto().to(device=device)
-    model_optimizer=torch.optim.Adam(model.parameters(),lr=LR,betas=(0.9,0.999),weight_decay=0.001)
+    model_optimizer=torch.optim.Adam(model.parameters(),lr=LR,betas=BETAS,weight_decay=DECAY)
 
     train_steps=(len(labels)+params['batch_size']-1)//params['batch_size']
 
