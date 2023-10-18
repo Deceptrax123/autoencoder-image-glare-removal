@@ -17,13 +17,10 @@ class EnhancementDataset(torch.utils.data.Dataset):
         
         image_x=Image.open("./errors/"+label)
         image_y=Image.open("./enhanced_errors/"+label)
-
-        image_xnp=np.array(image_x).astype(np.float32)
-        image_ynp=np.array(image_y).astype(np.float32)
         
         transforms=T.Compose([T.Resize(size=(1024,1024)),T.ToTensor(),T.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))])
         
-        image_xtensor=transforms(image_xnp)
-        image_ytensor=transforms(image_ynp)
+        image_xtensor=transforms(image_x)
+        image_ytensor=transforms(image_y)
 
         return image_xtensor,image_ytensor
