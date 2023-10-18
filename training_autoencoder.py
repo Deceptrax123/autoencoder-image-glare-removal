@@ -97,7 +97,7 @@ if __name__=='__main__':
 
     #Hyperparameters
     LR=0.001
-    NUM_EPOCHS=7500
+    NUM_EPOCHS=10000
     BETAS=(0.9,0.999)
     DECAY=0.001
 

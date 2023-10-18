@@ -14,6 +14,8 @@ Icon
 enhanced_errors/
 errors/
 glare_removed/
+high_brightness/
+reduced_brightness/
 
 #logging
 wandb/
